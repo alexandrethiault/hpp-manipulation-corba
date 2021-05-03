@@ -13,6 +13,7 @@
 #include <hpp/common.idl>
 
 #include <hpp/core_idl/path_planners.idl>
+#include <hpp/manipulation_idl/_problem.idl>
 #include <hpp/manipulation_idl/_graph.idl>
 
 module hpp
@@ -51,10 +52,18 @@ module hpp
         void setIkSolverInitialization (in IkSolverInitialization solver);
         //-> ikSolverInitialization
       }; // interface EndEffectorTrajectory
+
+      interface StatesPathFinder
+      {
+
+				floatSeqSeq compute(in floatSeq q1, in floatSeq q2);
+      }; // interface StatesPathFinder
+
     }; // module pathPlanner_idl
   }; // module manipulation_idl
 }; // module hpp
 
+//* #include <hpp/manipulation/path-planner/states-path-finder.hh>
 //* #include <hpp/manipulation/path-planner/end-effector-trajectory.hh>
 //* #include <hpp/core_idl/paths.hh>
 //* #include <hpp/core_idl/path_planners.hh>
