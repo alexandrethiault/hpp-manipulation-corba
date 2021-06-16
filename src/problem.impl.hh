@@ -109,6 +109,10 @@ namespace hpp {
             pinocchio_idl::Device_ptr robot, manipulation_idl::graph_idl::Graph_ptr graph);
 
         core_idl::Roadmap_ptr createRoadmap(core_idl::Distance_ptr distance, pinocchio_idl::Device_ptr robot);
+
+        manipulation_idl::pathPlanner_idl::statesPathFinder_idl::StatesPathFinder_ptr
+            createStatesPathFinder();
+
       private:
         ProblemSolverPtr_t problemSolver();
         graph::GraphPtr_t graph(bool throwIfNull = true);

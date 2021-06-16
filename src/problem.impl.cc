@@ -45,6 +45,7 @@
 #include <hpp/manipulation/steering-method/graph.hh>
 #include <hpp/manipulation/serialization.hh>
 #include <hpp/manipulation/roadmap.hh>
+#include <hpp/manipulation/path-planner/states-path-finder.hh>
 
 #include "hpp/manipulation_idl/_graph.hh"
 #include "hpp/manipulation_idl/_path_planners-fwd.hh"
@@ -763,6 +764,21 @@ namespace hpp {
               ,
               reference_to_object<pinocchio::Device> (server_->parent(), robot)
               ));
+        return o._retn();
+      }
+      
+      manipulation_idl::pathPlanner_idl::statesPathFinder_idl::StatesPathFinder_ptr
+      Problem::createStatesPathFinder()
+      {
+        using namespace manipulation_idl::pathPlanner_idl;
+        typedef manipulation_impl::pathPlanner_impl::statesPathFinder_impl::StatesPathFinder StatesPathFinder_impl;
+        statesPathFinder_idl::StatesPathFinder_var o =
+          makeServantDownCast<StatesPathFinder_impl> (
+            server_->parent(),
+            pathPlanner::statesPathFinder::StatesPathFinder::create(
+                    problemSolver()->problem()
+            )
+          );
         return o._retn();
       }
     } // namespace impl

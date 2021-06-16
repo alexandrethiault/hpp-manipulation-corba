@@ -161,4 +161,8 @@ class ProblemSolver (Parent):
     # state stateId
     def setTargetState (self, stateId):
         self.client.manipulation.problem.setTargetState(stateId)
+
+    ## create an instance of a StatesPathFinder
+    def createStatesPathFinder(self):
+        return self.client.manipulation.problem.createStatesPathFinder()
     ## \}
