@@ -110,7 +110,7 @@ namespace hpp {
 
         core_idl::Roadmap_ptr createRoadmap(core_idl::Distance_ptr distance, pinocchio_idl::Device_ptr robot);
 
-        manipulation_idl::pathPlanner_idl::statesPathFinder_idl::StatesPathFinder_ptr
+        manipulation_idl::pathPlanner_idl::StatesPathFinder_ptr
             createStatesPathFinder();
 
       private:

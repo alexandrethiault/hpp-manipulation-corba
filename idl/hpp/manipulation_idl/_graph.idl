@@ -23,6 +23,7 @@
 #include <hpp/constraints_idl/constraints.idl>
 #include <hpp/core_idl/steering_methods.idl>
 #include <hpp/core_idl/path_validations.idl>
+#include <hpp/core_idl/paths.idl>
 
 module hpp {
   module constraints_idl {
@@ -121,6 +122,22 @@ module hpp {
         core_idl::ConstraintSet targetConstraint () raises (Error);
 
         core_idl::ConstraintSet pathConstraint () raises (Error);
+
+        core_idl::Path build (in floatSeq q1, in floatSeq q2) raises (Error);
+        //*hpp::core::vector_t _q1 = hpp::corbaServer::floatSeqToVector (q1);
+        //*hpp::core::vector_t _q2 = hpp::corbaServer::floatSeqToVector (q2);
+        //*hpp::core::PathPtr_t path;
+        //*bool res = getT()->build (path, _q1, _q2);
+        //*if (!res) {
+        //*  std::ostringstream oss;
+        //*  oss << "Failed building a path between _q1=";
+        //*  oss << hpp::pinocchio::displayConfig(_q1);
+        //*  oss << " and _q2=";
+        //*  oss << hpp::pinocchio::displayConfig(_q2);
+        //*  throw(std::runtime_error(oss.str())); 
+        //*}
+        //*return ::hpp::corbaServer::makeServantDownCast<hpp::core_impl::Path,hpp::core_impl::Path>(server_, path)._retn();
+
       }; // interface Edge
 
       interface LevelSetEdge : Edge
@@ -154,5 +171,6 @@ module hpp {
 //* #include <hpp/manipulation/graph/state.hh>
 //* #include <hpp/manipulation/graph/state-selector.hh>
 //* #include <hpp/manipulation/graph/validation.hh>
+//* #include <hpp/pinocchio/configuration.hh>
 
 #endif // HPP_MANIPULATION_STEERING_METHODS_IDL

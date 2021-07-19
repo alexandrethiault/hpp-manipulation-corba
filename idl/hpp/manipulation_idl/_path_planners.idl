@@ -53,15 +53,13 @@ module hpp
         //-> ikSolverInitialization
       }; // interface EndEffectorTrajectory
 
-
-      module statesPathFinder_idl {
       interface StatesPathFinder
       {
 
-        floatSeqSeq compute(in floatSeq q1, in floatSeq q2);
+        floatSeqSeq computeConfigList(in floatSeq q1, in floatSeq q2);
         //*hpp::core::vector_t _q1 = hpp::corbaServer::floatSeqToVector (q1);
         //*hpp::core::vector_t _q2 = hpp::corbaServer::floatSeqToVector (q2);
-        //*std::vector<boost::shared_ptr<Eigen::Matrix<double, -1, 1> > > res = getT()->compute (_q1, _q2);
+        //*std::vector<boost::shared_ptr<Eigen::Matrix<double, -1, 1> > > res = getT()->computeConfigList (_q1, _q2);
         //*int s = res.size();
         //*int n = res[0]->rows(); // cols() == 1
         //*Eigen::Matrix<double, -1, -1> matrix;
@@ -71,28 +69,32 @@ module hpp
         //*hpp::floatSeqSeq* __return__ = hpp::corbaServer::matrixToFloatSeqSeq (matrix);
         //*return __return__;
 
+        core_idl::PathVector pathFromConfigList(in long i);
+
+        void reset();
+
+        core_idl::PathVector buildPath(in floatSeq q1, in floatSeq q2);
+
         Names_t getConstraintNamesFromSolverAtWaypoint(in long jslv);
         //-> constraintNamesFromSolverAtWaypoint
         string displayConfigsSolved();
-        //-> displayConfigsSolved
+
         floatSeq configSolved(in long wp);
-        //-> configSolved
+
         Names_t getLastBuiltTransitions();
         //-> lastBuiltTransitions
         boolean buildOptimizationProblem(in Names_t transitions);
         //-> buildOptimizationProblemFromNames
         void initWPRandom(in long wp);
-        //-> initWPRandom
+
         void initWPNear(in long wp);
-        //-> initWPNear
+
         void initWP(in long wp, in floatSeq q);
-        //-> initWP
+
         long solveStep(in long wp);
-        //-> solveStep
 
       }; // interface StatesPathFinder
 
-      }; // module statesPathFinder_idl
     }; // module pathPlanner_idl
   }; // module manipulation_idl
 }; // module hpp

@@ -767,15 +767,15 @@ namespace hpp {
         return o._retn();
       }
       
-      manipulation_idl::pathPlanner_idl::statesPathFinder_idl::StatesPathFinder_ptr
+      manipulation_idl::pathPlanner_idl::StatesPathFinder_ptr
       Problem::createStatesPathFinder()
       {
         using namespace manipulation_idl::pathPlanner_idl;
-        typedef manipulation_impl::pathPlanner_impl::statesPathFinder_impl::StatesPathFinder StatesPathFinder_impl;
-        statesPathFinder_idl::StatesPathFinder_var o =
+        typedef manipulation_impl::pathPlanner_impl::StatesPathFinder StatesPathFinder_impl;
+        StatesPathFinder_var o =
           makeServantDownCast<StatesPathFinder_impl> (
             server_->parent(),
-            pathPlanner::statesPathFinder::StatesPathFinder::create(
+            pathPlanner::StatesPathFinder::create(
                     problemSolver()->problem()
             )
           );
