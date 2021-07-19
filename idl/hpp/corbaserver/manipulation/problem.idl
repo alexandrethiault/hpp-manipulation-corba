@@ -292,7 +292,7 @@ module hpp {
         core_idl::Roadmap createRoadmap(in core_idl::Distance distance,
           in pinocchio_idl::Device robot) raises (Error);
 
-        manipulation_idl::pathPlanner_idl::statesPathFinder_idl::StatesPathFinder createStatesPathFinder() raises (Error);
+        manipulation_idl::pathPlanner_idl::StatesPathFinder createStatesPathFinder() raises (Error);
 
       }; // interface Problem
 
